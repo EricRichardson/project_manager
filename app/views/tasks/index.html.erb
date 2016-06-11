@@ -1,0 +1,7 @@
+<h1>All Tasks</h1>
+
+<% @tasks.each do |task| %>
+  <%= task.title %>
+  <%= task.due_date %>
+  <hr>
+<% end %>

@@ -1,0 +1,13 @@
+<%= form_for @task do |f| %>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.label :duedate %>
+    <%= f.text_field :duedate %>
+  </div>
+
+  <%= f.submit %>
+<% end %>

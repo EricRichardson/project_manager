@@ -1,6 +1,23 @@
 Rails.application.routes.draw do
+  get 'tasks/show'
+
+  get 'tasks/index'
+
+  get 'tasks/edit'
+
+  get 'tasks/new'
+
+  get 'projects/index'
+
+  get 'projects/show'
+
+  get 'projects/edit'
+
   root 'home#index'
   get '/about' => 'home#about'
+
+  resources :projects
+  resources :tasks
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+20.times do
+  Project.create title: Faker::Hacker.verb + Faker::Hacker.noun,
+                 description: Faker::Hacker.say_something_smart + Faker::Hipster.paragraph(3),
+                 due_date: Faker::Date.forward(60)
+end
