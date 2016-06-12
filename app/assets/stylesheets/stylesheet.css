@@ -1,0 +1,36 @@
+.container {
+  width: 100%;
+}
+
+body {
+  background-color: #f5f5dc;
+}
+
+nav {
+  background-color: #B6212D;
+  padding: 20px;
+  border: solid black 1px;
+  border-radius: 10px;
+  width: 100%;
+}
+
+nav a {
+  font-size: 1.2em;
+  color: white;
+  text-decoration: none;
+}
+
+nav a:hover{
+  color: black;
+}
+
+h1,h2,h3 {
+  text-align: center;
+}
+
+.project {
+  width: 80%;
+  margin: 10px auto;
+  padding: 5px;
+  border-bottom: 3px solid darkgrey;
+}
