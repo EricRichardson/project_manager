@@ -1,7 +1,5 @@
 class ProjectsController < ApplicationController
-  def index
-    @projects = Project.order(created_at: :desc)
-  end
+  before_action :find_project, only: [:show, :edit, :update, :destroy]
 
   def new
     @project = Project.new
@@ -14,27 +12,35 @@ class ProjectsController < ApplicationController
     else
       render :new
     end
+  end
 
+  def index
+    @projects = Project.order(created_at: :desc)
   end
 
   def show
-    @project = project
   end
 
   def edit
-    @project = project
+  end
+
+  def update
+    if @project.update project_params
+      redirect_to project_path(@project)
+    else
+      render :edit
+    end
   end
 
   def destroy
-    @project = project
     @project.destroy
     redirect_to projects_path
   end
 
   private
 
-    def project
-      Project.find params[:id]
+    def find_project
+      @project = Project.find params[:id]
     end
 
     def project_params
