@@ -16,7 +16,10 @@ class DiscussionsController < ApplicationController
   end
 
   def show
+    @comments = Comment.order(created_at: :desc)
+  end
 
+  def edit
   end
   private
 

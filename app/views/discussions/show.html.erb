@@ -1,3 +1,11 @@
 <h1><%= @discussion.title %></h1>
-<%= @discussion.descriptioin %>
+<%= @discussion.description %>
 <hr>
+<%= link_to "Make a Comment", new_project_discussion_comment_path(@project, @discussion) %>
+<hr>
+<% @comments.each do |com| %>
+  <%= com.body %>
+  <%= link_to "Edit", edit_project_discussion_comment_path(@project, @discussion, com) %>
+  <%= link_to "Delete", project_discussion_comment_path(@project, @discussion, com), method: :delete, data: {confirm: "Are you sure?"} %>
+  <hr>
+<% end %>

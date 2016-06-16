@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   get '/about' => 'home#about'
 
   resources :projects do
-    resources :discussions
+    resources :discussions do
+      resources :comments, only: [:new, :create, :edit, :destroy, :update]
+    end
   end
   resources :tasks
   # The priority is based upon order of creation: first created -> highest priority.

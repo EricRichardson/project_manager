@@ -5,6 +5,6 @@
 <%= link_to "New Discussion", new_project_discussion_path(@project) %>
 <hr>
 <% @discussions.each do |discus| %>
-  <%= discus.title %>
+  <%=link_to discus.title, project_discussion_path(@project, discus) %>
   <hr>
 <% end %>
