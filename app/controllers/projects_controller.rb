@@ -19,6 +19,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @discussions = Discussion.order(created_at: :desc)
   end
 
   def edit

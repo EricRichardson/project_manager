@@ -1,4 +1,6 @@
 class Project < ActiveRecord::Base
+  has_many :discussions, dependent: :destroy
+  
   validates :title,   presence: true,
                       uniqueness: true
   validate :due_date_checker

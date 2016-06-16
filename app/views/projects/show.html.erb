@@ -1,3 +1,10 @@
 <%= render partial: "display_project", locals: { project: @project } %>
 <%= link_to "Edit", edit_project_path %>
 <%= link_to "Delete", project_path, method: "delete", data: {confirm: "Are you sure?"} %>
+
+<%= link_to "New Discussion", new_project_discussion_path(@project) %>
+<hr>
+<% @discussions.each do |discus| %>
+  <%= discus.title %>
+  <hr>
+<% end %>
