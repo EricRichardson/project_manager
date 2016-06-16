@@ -20,6 +20,7 @@ class ProjectsController < ApplicationController
 
   def show
     @discussions = Discussion.order(created_at: :desc)
+    @tasks = Task.order(:created_at)
   end
 
   def edit
@@ -35,7 +36,7 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project.destroy
-    redirect_to projects_path
+    redirect_to project_path(@project)
   end
 
   private
