@@ -6,8 +6,13 @@
 
   <div>
     <%= f.label :duedate %>
-    <%= f.text_field :duedate %>
+    <%= f.date_select :duedate %>
   </div>
-
+  <% unless @task.title == nil %>
+    <div>
+      <%= f.label :completed %>
+      <%= f.check_box :completed %>
+    </div>
+  <% end %>
   <%= f.submit %>
 <% end %>

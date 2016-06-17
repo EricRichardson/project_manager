@@ -16,7 +16,7 @@ class DiscussionsController < ApplicationController
   end
 
   def show
-    @comments = Comment.order(created_at: :desc)
+    @comments = @discussion.comments.order(created_at: :desc)
   end
 
   def edit
