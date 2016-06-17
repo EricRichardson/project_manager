@@ -1,0 +1,12 @@
+<nav>
+  <%= link_to "Home", root_path %> |
+  <%= link_to "About", about_path %> |
+  <%= link_to "Projects", projects_path %> |
+  <% if user_signed_in? %>
+    <%= link_to "Sign out", sessions_path, method: :delete %>
+    Signed in as: <%= current_user.full_name %>
+  <% else %>
+    <%= link_to "Sign up", new_user_path %> |
+    <%= link_to "Sign in", new_session_path %>
+  <% end %>
+</nav>
