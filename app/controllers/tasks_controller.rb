@@ -8,6 +8,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.new task_params
     @task.project = @project
+    @task.user = current_user
     if @task.save
       redirect_to project_path(@project)
     else

@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
   def create
     comment = Comment.new comment_params
     comment.discussion = @discussion
+    comment.user = current_user
     if comment.save
       redirect_to project_discussion_path(@project, @discussion)
     else
