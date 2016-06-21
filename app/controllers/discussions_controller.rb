@@ -1,6 +1,6 @@
 class DiscussionsController < ApplicationController
-  before_action :find_project, only: [:new, :create, :show]
-  before_action :find_discussion, only: [:show]
+  before_action :find_project
+  before_action :find_discussion, only: [:show, :edit, :update, :destroy]
 
   def new
     @discussion = Discussion.new
@@ -8,6 +8,8 @@ class DiscussionsController < ApplicationController
 
   def create
     discussion = Discussion.new discussion_params
+    discussion.project = @project
+    discussion.user = current_user
     if discussion.save
       redirect_to project_path(@project)
     else
@@ -21,6 +23,21 @@ class DiscussionsController < ApplicationController
 
   def edit
   end
+
+  def update
+    if @discussion.update discussion_params
+      redirect_to project_discussion_path(@project, @discussion), notice: "Project updated!"
+    else
+      flash[:alert] = "Error in the update"
+      render :edit
+    end
+  end
+
+  def destroy
+    @discussion.destroy
+    redirect_to project_path(@project), notice: "Discussion deleted"
+  end
+
   private
 
     def find_project
