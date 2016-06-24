@@ -11,3 +11,10 @@
                  description: Faker::Hacker.say_something_smart + Faker::Hipster.paragraph(3),
                  due_date: Faker::Date.forward(60)
 end
+
+tags = []
+8.times { tags << Faker::Hacker.adjective }
+
+tags.each do |t|
+  Tag.create(title: t)
+end

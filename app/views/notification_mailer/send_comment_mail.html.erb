@@ -3,5 +3,6 @@
 <p>
   They said: <br>
   <%= @comment.body %><br>
-  View the discussion by clicking <%= link_to "here", project_discussion_url(@project, @discussion) %>
+  View the discussion by clicking <%= link_to "here",
+           project_discussion_url(@project, @discussion) %>
 </p>

@@ -2,4 +2,5 @@
   <h1><%= link_to project.title, project_path(project) %></h1>
   <p><%= project.description %></p>
   <%= project.due_date %>
+  <p>Tags: <%= project.tags.map{ |t| t.title.capitalize }.join(', ') %></p>
 </div>

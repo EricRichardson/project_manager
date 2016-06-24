@@ -8,6 +8,10 @@
     <%= f.text_field :description %>
   </div>
   <div>
+  <div>
+    <%= f.label :tags %>
+    <%= f.collection_check_boxes(:tag_ids, Tag.order(:title), :id, :title)  %>
+  </div>
     <%= f.label :due_date %>
     <%= f.date_select :due_date %>
   </div>

@@ -1,6 +1,8 @@
 class Project < ActiveRecord::Base
   has_many :discussions, dependent: :destroy
   has_many :tasks, dependent: :destroy
+  has_many :taggings
+  has_many :tags, through: :taggings
   belongs_to :user
 
   validates :title,   presence: true,
