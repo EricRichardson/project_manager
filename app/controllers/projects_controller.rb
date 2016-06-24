@@ -1,6 +1,8 @@
 class ProjectsController < ApplicationController
   before_action :find_project, only: [:show, :edit, :update, :destroy]
 
+  before_action :authenticate_user, only: [:new, :edit]
+
   def new
     @project = Project.new
   end
@@ -37,7 +39,7 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project.destroy
-    redirect_to project_path(@project)
+    redirect_to projects_path
   end
 
   private

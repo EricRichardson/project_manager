@@ -11,6 +11,8 @@ class CommentsController < ApplicationController
     comment.discussion = @discussion
     comment.user = current_user
     if comment.save
+      NotificationMailer.send_comment_mail(comment).deliver_later
+      #unless @discussion.user == current_user
       redirect_to project_discussion_path(@project, @discussion)
     else
       render :new

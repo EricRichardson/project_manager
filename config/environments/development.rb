@@ -1,5 +1,5 @@
 Rails.application.configure do
-  ActionMailer::Base.smtp_settings = {
+ActionMailer::Base.smtp_settings = {
 :user_name => 'ponytester123@gmail.com',
 :password => ENV['PONY_PASSWORD'],
 :domain => 'gmail.com',
@@ -8,6 +8,8 @@ Rails.application.configure do
 :authentication => :plain,
 :enable_starttls_auto => true
 }
+
+config.action_mailer.default_url_options = { host: 'localhost:3000' }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on

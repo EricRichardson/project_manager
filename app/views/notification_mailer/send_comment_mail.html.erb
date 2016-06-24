@@ -1,0 +1,7 @@
+<h1>Some one left a comment on <%= @discussion.title %></h1>
+
+<p>
+  They said: <br>
+  <%= @comment.body %><br>
+  View the discussion by clicking <%= link_to "here", project_discussion_url(@project, @discussion) %>
+</p>
