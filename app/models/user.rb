@@ -4,7 +4,10 @@ class User < ActiveRecord::Base
   has_many :discussions, dependent: :nullify
   has_many :comments, dependent: :nullify
   has_many :projects, dependent: :nullify
-  
+
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_projects, through: :favorites, source: :project
+
   has_many :memberships, dependent: :destroy
   has_many :teams, through: :memberships, source: :project
 

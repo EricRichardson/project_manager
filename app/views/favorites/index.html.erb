@@ -1,0 +1,4 @@
+<h1>Favorited Projects</h1>
+ <% @projects.each do |project| %>
+   <%= render partial: "/projects/display_project", locals: { project: project} %>
+ <% end %>

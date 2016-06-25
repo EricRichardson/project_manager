@@ -8,6 +8,9 @@ class Project < ActiveRecord::Base
   has_many :membership, dependent: :destroy
   has_many :users, through: :membership
 
+  has_many :favoriting_users, through: :favorites, source: :users
+  has_many :favorites, dependent: :destroy
+
   validates :title,   presence: true,
                       uniqueness: true
   validate :due_date_checker
@@ -18,4 +21,11 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def favorited_by?(user)
+    favorites.exists?(user: user)
+  end
+
+  def favorite_for(user)
+    favorites.find_by_user_id user
+  end
 end

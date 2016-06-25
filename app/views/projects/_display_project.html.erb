@@ -1,7 +1,16 @@
 <div class=project>
   <h1><%= link_to project.title, project_path(project) %></h1>
+
   <p><%= project.description %></p>
   <%= project.due_date %>
+
   <p>Tags: <%= project.tags.map{ |t| t.title.capitalize }.join(', ') %></p>
+
   <p>Members: <%= project.users.map{ |t| t.full_name.capitalize }.join(', ') %></p>
+
+  <% if project.favorited_by?(current_user) %>
+    <%= link_to "Unfavorite", project_favorite_path(project, project.favorite_for(current_user)), method: :delete %>
+  <% else %>
+    <%= link_to "Favorite", project_favorites_path(project), method: :post %>
+  <% end %>
 </div>

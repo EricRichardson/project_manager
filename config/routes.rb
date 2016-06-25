@@ -12,7 +12,10 @@ Rails.application.routes.draw do
       resources :comments, only: [:new, :create, :edit, :destroy, :update]
     end
     resources :tasks
+    resources :favorites, only: [:create, :destroy]
   end
+
+  resources :favorites, only: [:index]
 
   resources :sessions, only: [:new, :create, :edit, :update] do
     delete :destroy, on: :collection

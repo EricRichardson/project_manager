@@ -6,7 +6,7 @@ class Ability
     #
       user ||= User.new
 
-      can :manage, [Project, Discussion, Task, Comment] do |obj|
+      can :manage, [Project, Discussion, Task, Comment, Favorite] do |obj|
         obj.user == user
       end
 
