@@ -5,6 +5,9 @@ class Project < ActiveRecord::Base
   has_many :tags, through: :taggings
   belongs_to :user
 
+  has_many :membership, dependent: :destroy
+  has_many :users, through: :membership
+
   validates :title,   presence: true,
                       uniqueness: true
   validate :due_date_checker

@@ -3,4 +3,5 @@
   <p><%= project.description %></p>
   <%= project.due_date %>
   <p>Tags: <%= project.tags.map{ |t| t.title.capitalize }.join(', ') %></p>
+  <p>Members: <%= project.users.map{ |t| t.full_name.capitalize }.join(', ') %></p>
 </div>

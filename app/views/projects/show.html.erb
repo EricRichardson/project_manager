@@ -1,4 +1,5 @@
 <%= render partial: "display_project", locals: { project: @project } %>
+
 <% if can? :manage, @project %>
   <%= link_to "Edit", edit_project_path %>
   <%= link_to "Delete", project_path, method: "delete", data: {confirm: "Are you sure?"} %>

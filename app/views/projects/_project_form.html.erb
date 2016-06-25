@@ -12,6 +12,10 @@
     <%= f.label :tags %>
     <%= f.collection_check_boxes(:tag_ids, Tag.order(:title), :id, :title)  %>
   </div>
+  <div>
+    <%= f.label :members %>
+    <%= f.collection_check_boxes(:user_ids, User.all, :id, :full_name) %>
+  </div>
     <%= f.label :due_date %>
     <%= f.date_select :due_date %>
   </div>
