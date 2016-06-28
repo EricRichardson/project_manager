@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
   before_action :find_project
   before_action :find_discussion
   before_action :find_comment, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!
   def new
     @comment = Comment.new
   end
@@ -12,7 +13,6 @@ class CommentsController < ApplicationController
     comment.user = current_user
     if comment.save
       NotificationMailer.send_comment_mail(comment).deliver_later
-      #unless @discussion.user == current_user
       redirect_to project_discussion_path(@project, @discussion)
     else
       render :new

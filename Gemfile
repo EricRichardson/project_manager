@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'bootstrap-sass'
 gem 'bootstrap_form'
-
+gem 'bootstrap-glyphicons'
 gem 'delayed_job_active_record'
 gem 'rails-erd'
 gem 'hirb'

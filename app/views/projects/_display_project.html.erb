@@ -9,8 +9,12 @@
   <p>Members: <%= project.users.map{ |t| t.full_name.capitalize }.join(', ') %></p>
 
   <% if project.favorited_by?(current_user) %>
-    <%= link_to "Unfavorite", project_favorite_path(project, project.favorite_for(current_user)), method: :delete %>
+    <%= link_to '<span class="glyphicon glyphicon-star"></span>'.html_safe, project_favorite_path(project, project.favorite_for(current_user)), method: :delete %>
   <% else %>
-    <%= link_to "Favorite", project_favorites_path(project), method: :post %>
+
+    <%= link_to(project_favorites_path(project), method: :post) do |g| %>
+      <i class="glyphicon glyphicon-star-empty"></i>
+    <% end %>
+
   <% end %>
 </div>

@@ -2,6 +2,8 @@ class DiscussionsController < ApplicationController
   before_action :find_project
   before_action :find_discussion, only: [:show, :edit, :update, :destroy]
 
+  before_action :authenticate_user!, except: [:show, :index]
+
   def new
     @discussion = Discussion.new
   end

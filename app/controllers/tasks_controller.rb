@@ -1,6 +1,8 @@
 class TasksController < ApplicationController
   before_action :find_project
   before_action :find_task, only: [:show, :update, :destroy, :edit]
+
+  before_action :authenticate_user!, except: [:show, :index]
   def new
     @task = Task.new
   end

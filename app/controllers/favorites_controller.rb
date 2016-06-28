@@ -1,5 +1,7 @@
 class FavoritesController < ApplicationController
 
+  before_action :authenticate_user!
+
   def create
     project = Project.find params[:project_id]
     fav = Favorite.create(user: current_user, project: project)
