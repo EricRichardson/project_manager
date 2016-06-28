@@ -1,18 +1,12 @@
-<%= form_for([@project, @task]) do |f| %>
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
+<%= bootstrap_form_for([@project, @task]) do |f| %>
 
-  <div>
-    <%= f.label :duedate %>
+    <%= f.text_field :title %>
+
     <%= f.date_select :duedate %>
-  </div>
+
   <% unless @task.title == nil %>
-    <div>
-      <%= f.label :completed %>
       <%= f.check_box :completed %>
-    </div>
   <% end %>
+  
   <%= f.submit %>
 <% end %>

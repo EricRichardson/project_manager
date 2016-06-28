@@ -1,10 +1,9 @@
-<%= form_tag password_reset_path, method: :patch do %>
+<%= bootstrap_form_tag url: password_reset_path, method: :patch do |f| %>
   <%= hidden_field_tag :token, @token %>
-  <%= label_tag :new_password %>
-  <%= password_field_tag :new_password %>
 
-  <%= label_tag :new_password_confirmation %>
-  <%= password_field_tag :new_password_confirmation %>
+  <%= f.password_field :new_password %>
 
-  <%= submit_tag "Generate New Password" %>
+  <%= f.password_field :new_password_confirmation %>
+
+  <%= f.submit "Generate New Password" %>
 <% end %>

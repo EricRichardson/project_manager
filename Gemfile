@@ -1,4 +1,8 @@
 source 'https://rubygems.org'
+
+gem 'bootstrap-sass'
+gem 'bootstrap_form'
+
 gem 'delayed_job_active_record'
 gem 'rails-erd'
 gem 'hirb'

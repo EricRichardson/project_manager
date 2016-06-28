@@ -1,7 +1,8 @@
-<%= form_for [@project, @discussion] do |f| %>
-  <%= f.label :title %>
+<%= bootstrap_form_for [@project, @discussion] do |f| %>
+
   <%= f.text_field :title %>
-  <%= f.label :description %>
+
   <%= f.text_area :description %>
+  
   <%= f.submit %>
 <% end %>

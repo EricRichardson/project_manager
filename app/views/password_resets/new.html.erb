@@ -1,7 +1,8 @@
 <h1>Forgot Your Password?</h1>
 <h2>Enter your email to get a new one!</h2>
-<%= form_tag password_resets_path do %>
-  <%= label_tag :email %>
-  <%= email_field_tag :email %>
-  <%= submit_tag "Reset My Password" %>
+<%= bootstrap_form_tag url: password_resets_path do |f| %>
+
+  <%= f.email_field :email %>
+
+  <%= f.submit "Reset My Password" %>
 <% end %>
