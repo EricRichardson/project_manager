@@ -1,0 +1,8 @@
+<div id="<%= dom_id(com) %>">
+<%= com.body %>
+<% if (can? :manage, com) || (can? :manage, @discussion) || (can? :manage, @project)  %>
+  <%= link_to "Edit", edit_project_discussion_comment_path(@project, @discussion, com) %>
+  <%= link_to "Delete", project_discussion_comment_path(@project, @discussion, com), method: :delete, remote: true %>
+<% end %>
+<hr>
+</div>

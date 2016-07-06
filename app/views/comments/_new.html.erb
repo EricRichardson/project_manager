@@ -1,0 +1,4 @@
+<%= bootstrap_form_for [@project, @discussion, @comment], remote: true do |f| %>
+  <%= f.text_area :body %>
+  <%= f.submit "Post Comment" %>
+<% end %>

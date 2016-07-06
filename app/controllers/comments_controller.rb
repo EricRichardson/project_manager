@@ -8,14 +8,19 @@ class CommentsController < ApplicationController
   end
 
   def create
-    comment = Comment.new comment_params
-    comment.discussion = @discussion
-    comment.user = current_user
-    if comment.save
-      NotificationMailer.send_comment_mail(comment).deliver_later
-      redirect_to project_discussion_path(@project, @discussion)
-    else
-      render :new
+    @comment = Comment.new comment_params
+    @comment.discussion = @discussion
+    @comment.user = current_user
+
+    respond_to do |format|
+      if @comment.save
+        NotificationMailer.send_comment_mail(@comment).deliver_later
+        format.html {redirect_to project_discussion_path(@project, @discussion)}
+        format.js {render '/comments/new_comment'}
+      else
+        format.html{render :new}
+        format.js {render 'new_comment_fail'}
+      end
     end
   end
 
@@ -32,7 +37,10 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment.destroy
-    redirect_to project_discussion_path(@project, @discussion)
+    respond_to do |format|
+    format.html {redirect_to project_discussion_path(@project, @discussion)}
+    format.js { render }
+    end
   end
 
   private
