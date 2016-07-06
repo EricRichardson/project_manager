@@ -1,24 +1,27 @@
 <%= render partial: "display_project", locals: { project: @project } %>
 
 <% if can? :manage, @project %>
+
   <%= link_to "Edit", edit_project_path %>
   <%= link_to "Delete", project_path, method: "delete", data: {confirm: "Are you sure?"} %>
-  <%= link_to "New Task", new_project_task_path(@project) %>
+
+
+
+  <a href="#", data-toggle='modal', data-target='#new-task-modal'>New Task</a>
+
+  <%= render 'tasks/form' %>
   <%= link_to "New Discussion", new_project_discussion_path(@project) %>
+
 <% end %>
 <hr>
 
 <%= "<h3>Tasks</h3>".html_safe unless @tasks.empty? %>
-<% @tasks.each do |task| %>
-  <strong><%= task.title %></strong><br>
-  Due Date: <%= task.duedate %><br>
-  Completed: <%= task.completed %><br>
-  <% if (can? :manage, task)  %>
-    <%= link_to "Edit", edit_project_task_path(@project, task) %>
-    <%= link_to "Delete", project_task_path(@project, task), method: :delete, data: {confirm: "Are you sure?"} %>
-    <hr>
+
+<div id="task-list">
+  <% @tasks.each do |task| %>
+    <%= render '/tasks/task', task: task %>
   <% end %>
-<% end %>
+</div>
 
 <%= "<h3>Discussions</h3>".html_safe unless @discussions.empty? %>
 <% @discussions.each do |discus| %>

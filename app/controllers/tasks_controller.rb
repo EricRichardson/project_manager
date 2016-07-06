@@ -11,10 +11,14 @@ class TasksController < ApplicationController
     @task = Task.new task_params
     @task.project = @project
     @task.user = current_user
-    if @task.save
-      redirect_to project_path(@project)
-    else
-      render :new
+    respond_to do |format|
+      if @task.save
+        format.html {redirect_to project_path(@project)}
+        format.js {render :task_success}
+      else
+        format.html {render :new}
+        format.js {render :task_failure }
+      end
     end
   end
 
@@ -38,7 +42,10 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    redirect_to project_path(@project)
+    respond_to do |format|
+      format.html {redirect_to project_path(@project)}
+      format.js {render}
+    end
   end
 
   private

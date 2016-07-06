@@ -1,0 +1,4 @@
+$('#new-task-modal').modal('toggle');
+
+$('#task-list').append("<%= j(render('/tasks/task', task: @task)) %>");
+$('#task-list div:last-child').hide().fadeIn(1000)
