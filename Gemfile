@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+
+gem 'omniauth-github'
+
 gem 'bootstrap-sass'
 gem 'bootstrap_form'
 gem 'bootstrap-glyphicons'

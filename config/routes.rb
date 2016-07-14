@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get '/auth/github', as: :sign_in_with_github
+  get '/auth/github/callback' => "callbacks#github"
+
   root 'home#index'
   get '/about' => 'home#about'
 

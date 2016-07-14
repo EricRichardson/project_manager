@@ -1,0 +1,2 @@
+ENV["GITHUB_KEY"] = "6ac55ecc0b1d9da9eee6"
+ENV["GITHUB_SECRET"] = "e9680d72d60bd9fc67c60dbb8554d1a69b9b1a39"
