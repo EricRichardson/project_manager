@@ -8,7 +8,7 @@ class Project < ActiveRecord::Base
   has_many :membership, dependent: :destroy
   has_many :users, through: :membership
 
-  has_many :favoriting_users, through: :favorites, source: :users
+  has_many :favoriting_users, through: :favorites, source: :user
   has_many :favorites, dependent: :destroy
 
   validates :title,   presence: true,
