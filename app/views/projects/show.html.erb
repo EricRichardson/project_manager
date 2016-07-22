@@ -25,7 +25,10 @@
 
 <%= "<h3>Discussions</h3>".html_safe unless @discussions.empty? %>
 <% @discussions.each do |discus| %>
-  <%=link_to discus.title, project_discussion_path(@project, discus) %>
+  <h3><%=link_to discus.title, project_discussion_path(@project, discus) %></h4>
+  <div>
+    <%= discus.description %>
+  </div>
   <% if can? :manage, discus %>
   <%= link_to "Edit", edit_project_discussion_path(@project, discus) %>
   <%= link_to "Delete", project_discussion_path(@project, discus), method: :delete, data: {confirm: "Are you sure?"} %>
